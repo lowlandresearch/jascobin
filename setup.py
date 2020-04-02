@@ -1,4 +1,5 @@
 import os
+import re
 from pathlib import Path
 
 from setuptools import setup, find_packages
@@ -7,7 +8,7 @@ HERE = Path(__file__).resolve().parent
 
 version_re = re.compile(r"^__version__\s*=\s*'(?P<version>.*)'$", re.M)
 def version():
-    match = version_re.search(Path('larc/__init__.py').read_text())
+    match = version_re.search(Path('jascobin/__init__.py').read_text())
     if match:
         return match.groupdict()['version'].strip()
     return '0.0.1'
@@ -40,7 +41,7 @@ setup(
         'multipledispatch',
         'olefile',
         'click',
-    ]
+    ],
 
     version=version(),
     description='Jasco binary data parsing',
